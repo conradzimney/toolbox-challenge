@@ -3,14 +3,28 @@
     <head lang="en">
         <meta charset="UTF-8">
         <title>Memory Game!</title>
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css"/>
     </head>
     <body>
-        <h1>Memory...</h1>
-        <p id="elapsed-seconds"></p>
 
-        <div id="game-board"></div>
+        <div class="row">
+
+            <button class="btn btn-default" id="startButton">Start New Game!</button>
+        </div>
+
+        <div class="row">
+
+            <div class= "col-sm-8" id="game-board"></div>
+
+            <div class="col-sm-3">
+                <p id="elapsed-seconds"></p>
+                <p id="matches"></p>
+                <p id="remaining"></p>
+                <p id="failures"></p>
+            </div>
+
+        </div>
 
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
