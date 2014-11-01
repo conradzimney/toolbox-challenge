@@ -3,7 +3,7 @@
 
 $(document).ready(function() {
     var gameBoard = $('#game-board');
-    var timer;
+    var timer = 0;
     var elapsedSeconds = 0;
     var clicks = 0; //records how many clicks the user has pressed
     var tile1; // first tile clicked
@@ -19,18 +19,16 @@ $(document).ready(function() {
         });
     }
     newGame();
-
     function check() {
         if (matches == 8) {
-            gameBoard.empty();
-            gameBoard.text("Congrats!");
             window.clearInterval(timer);
+            $('#restart-modal').modal();
         }
     }
-
     function newGame() {
         gameBoard.empty();
         window.clearInterval(timer);
+        clicks = 0;
         startTimer();
         matches = 0; //number of matched pairs
         $('#elapsed-seconds').text("Time: "+elapsedSeconds);
@@ -79,9 +77,6 @@ $(document).ready(function() {
                 img1 = $(this);
                 tile1 = img1.data('tile');
             } else {
-                // this is the second click
-                // so img1 refers to the first image
-                // and $this refers to the second image (that was just clicked)
                 tile2 = thisTile;
                 var img2 = $this;
                 if (tile1.tileNum == tile2.tileNum) {
@@ -89,7 +84,6 @@ $(document).ready(function() {
                     img1.off();
                     img2.off();
                 } else {
-                    // flip back over
                     window.setTimeout(function() {
                         img1.fadeOut(100, function() {
                             img1.attr('src', 'img/tile-back.png');
@@ -110,7 +104,6 @@ $(document).ready(function() {
             }
         }); //on click of gameBoard images
     } // New game function
-
     function startTimer() {
         var startTime = _.now();
         timer = window.setInterval(function() {
@@ -118,11 +111,7 @@ $(document).ready(function() {
             $('#elapsed-seconds').text("Time: "+elapsedSeconds);
         }, 1000);
     } // Timer function
-
-    $('#startButton').click(function() {
-        newGame();
-    });
-
+    $('#start-button').click(newGame);
+    $('#restart').click(newGame);
 }); //jQuery Ready Function
-
 

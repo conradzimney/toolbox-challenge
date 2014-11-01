@@ -2,32 +2,55 @@
 <html>
     <head lang="en">
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Memory Game!</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css"/>
         <link rel="stylesheet" href="css/main.css"/>
+        <link rel="icon" href="img/brain.jpeg">
     </head>
     <body>
+        <main class="container">
+            <header class="row">
+                <button class="btn btn-default" id="start-button">Start New Game!</button>
+            </header>
 
-        <div class="row">
+            <section class="row">
+                <div class="col-sm-8" id="game-board"></div>
+                <div class="col-sm-3">
+                    <p id="elapsed-seconds"></p>
+                    <p id="matches"></p>
+                    <p id="remaining"></p>
+                    <p id="failures"></p>
+                </div>
+            </section>
+            <section class="row" id="how-to-play">
+                <header>How To Play:</header>
+                <p>This is a memory game. The object of the game is to flip every tile over by remembering
+                where pairs of tiles are. Select two tiles. If they match, they will remain flipped.
+                Most importantly, have fun!</p>
+            </section>
+        </main>
 
-            <button class="btn btn-default" id="startButton">Start New Game!</button>
-        </div>
-
-        <div class="row">
-
-            <div class= "col-sm-8" id="game-board"></div>
-
-            <div class="col-sm-3">
-                <p id="elapsed-seconds"></p>
-                <p id="matches"></p>
-                <p id="remaining"></p>
-                <p id="failures"></p>
-            </div>
-
-        </div>
+        <div class="modal fade" id="restart-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Congratulations!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Would you like to play again?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal">No thanks.</button>
+                        <button class="btn btn-default" data-dismiss="modal" id="restart">Yes!</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+        <script src="js/bootstrap.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>
