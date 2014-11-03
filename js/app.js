@@ -59,7 +59,6 @@ $(document).ready(function() {
             row.append(img);
         });
         gameBoard.append(row);
-
         $('#game-board img').click(function() {
             clicks++;
             var $this = $(this);
